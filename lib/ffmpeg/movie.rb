@@ -9,8 +9,6 @@ module FFMPEG
     attr_reader :container
 
     def initialize(path)
-      raise Errno::ENOENT, "the file '#{path}' does not exist" unless File.exists?(path)
-
       @path = path
 
       # ffmpeg will output to stderr
@@ -119,7 +117,7 @@ module FFMPEG
         @size
       else
         File.size(@path)
-      end 
+      end
     end
 
     def audio_channel_layout
